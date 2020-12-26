@@ -34,7 +34,10 @@ const playerWinsHTML = document.getElementById("playerWins")
 const myWinsHTML = document.getElementById("myWins")
 const finalNOHTML = document.getElementById("finalNO")
 const playerCheatHTML = document.getElementById("playerCheat")
+const btnLanguageHTML =  document.getElementById("btnLanguage")
+const testLANGHTML = document.querySelectorAll(".testLANG")
 
+let language = "eng"
 
 let boolMyAnswers = true;
 let playerWins = 0, myWins= 0;
@@ -52,14 +55,14 @@ defeatAudio.volume = audioVolume
 audios.push(defeatAudio)
 let toggleMusic = () => {
   if(music.volume){
-    soundLogoHTML.src ="img/soundOFF.png"
+    soundLogoHTML.src ="./img/soundOFF.png"
     music.volume = 0
     // audios.forEach(audio => audio.volume = 0)
   } 
   else{
     if(music.paused) music.play()
     music.volume = 0.3
-    soundLogoHTML.src ="img/soundON.png"
+    soundLogoHTML.src ="./img/soundON.png"
     // audios.forEach(audio => audio.volume = audioVolume)
   } 
 } 
@@ -84,30 +87,66 @@ let exists = false
 let peopleLeft;
 let playerCardIndex;
 let boolWhoStarts = 1;
-let atributeImages = {
-  'bald': "👨‍🦲",
-  'male': "♂️",
-  'glasses': "👓",
-  'hat': "👒",
-  'beard': "🧔",
-  'moustache': "👨",
-  'chin-beard':"🧔🏽",
-  'white hair':"👵",
-  'blond hair':"👱‍♀️",
-  'red hair':"👨‍🦰",
-  'brown hair':"🧑‍",
-  'black hair':"👩🏻‍🦱",
-  'blue eyes': "👁️‍🗨️",
-  'big nose':"👃"
+let victory = -1
+//                          ** LANGUAGE ** (working)
+let toggleLanguage = () => {
+  if(language == "eng"){
+    language = "pt"
+    btnLanguageHTML.src = "./img/flagPT.png"
+    document.title = "Quem é Quem"
+  }
+  else{
+    btnLanguageHTML.src = "./img/flagEN.png"
+    language = "eng"
+    document.title = "Guess Who"
+  }
+  applyLanguage()
+}
+let applyLanguage = () => {
+  createAtributeHTML()
+  drawKnownFacts()
+  if(testLANGHTML)
+    testLANGHTML.forEach(e => {
+      e.innerHTML = words[e.id][language]
+    })
+    myGuessHMTL.innerHTML = `${words["myGuess"][language]} ${finalPerson} ?`
+    if(best["atribute"]) questionAskedHMTL.innerHTML = makePhrase(best["atribute"],language)
+    
+    if(victory>=0){
+      if(victory){
+        endMessageHMTL.innerHTML = words["endMessageWIN"][language]
+        whoItWasHTML.innerHTML = words["goodJob"][language]
+      }
+      else{
+        endMessageHMTL.innerHTML = words["endMessageLOSE"][language]
+        whoItWasHTML.innerHTML = `${words["whoItWas"][language]} <b><i>${computerCard}</i></b> `
+      }
+    }
 }
 
-let createAtributeHTML = (key) => {
-  let option = document.createElement("option");
-  option.text = `${atributeImages[key]} ${key.toUpperCase()}`
-  option.value = key
-  selectQuestionHMTL.add(option)
+
+let createAtributeHTML = () => {
+  selectQuestionHMTL.length = 1 // clear atributes in case we had more people and choose randomly
+  var option, flag 
+  for(var key in people["total"]){
+    flag = false
+    for(var atr in myAnswers){
+      if (key == atr){
+        flag = true
+        break
+      }
+    }
+    if(flag) continue
+    var word = words[key][language];
+    option = document.createElement("option");
+    option.text = `${atributeImages[words[key]["eng"]]} ${word.toUpperCase()}`
+    option.value = words[key]["eng"]
+    selectQuestionHMTL.add(option)
+  }
+  
 }
 let startGame = () => {
+  victory = -1
   playerCardIndex = getRand(cardsNum)
   cardAssigned.className = 'card card--assigned card-' + playerCardIndex; // show player assigned card
   activeCards = {}
@@ -121,15 +160,15 @@ let startGame = () => {
   computerCard = getRandomCard(cards)
   console.log(`MY CARD: ${computerCard}`)
   toClean.forEach(e => e.innerHTML = "")
-  selectQuestionHMTL.length = 1 // clear atributes in case we had more people and choose randomly
   guessedPersonHTML.value =""
   guessedPerson = ""
   setTotal(people)
   activeCards = JSON.parse(JSON.stringify(people))  // Deep Copy of an object
   Object.keys(people["total"]).forEach(key => {
     possibleAtributes.push(key)
-    createAtributeHTML(key) // fill possible atributes HTML
+    // fill possible atributes HTML
   })
+  createAtributeHTML()
   showHUD()
   if(boolWhoStarts){
     play(boolWhoStarts)
@@ -151,8 +190,8 @@ let endGame = win => {
     victoryAudio.play()
     playerWins += 1
     playerWinsHTML.innerHTML = playerWins
-    endMessageHMTL.innerHTML = "🎊 YOU WIN 🎊"
-    whoItWasHTML.innerHTML = `Good job!`
+    endMessageHMTL.innerHTML = words["endMessageWIN"][language]
+    whoItWasHTML.innerHTML = words["goodJob"][language]
     endMessageHMTL.style.color = "#00dd00"
 
   } else {
@@ -160,8 +199,9 @@ let endGame = win => {
     music.pause()
     myWins += 1
     myWinsHTML.innerHTML = `${myWins}`
-    endMessageHMTL.innerHTML = "YOU LOST"
-    whoItWasHTML.innerHTML = `🤖 was <b><i>${computerCard}</i></b> `
+    endMessageHMTL.innerHTML =  words["endMessageLOSE"][language]
+    whoItWasHTML.innerHTML = `${words["whoItWas"][language]} <b><i>${computerCard}</i></b> `
+
     endMessageHMTL.style.color = "red"
 
   }
@@ -183,7 +223,7 @@ let getBestQuestion = () => {
       }
     })
     bestAtribute = getRandomBest(lowest)[0]
-    return {atribute: bestAtribute, question: makePhrase(bestAtribute)}
+    return {atribute: bestAtribute, question: makePhrase(bestAtribute,language)}
   }
   else{
     return {atribute: null, question: `${Object.keys(activeCards)}`}
@@ -209,7 +249,8 @@ let getFinalAnswerValue = (value) => {
       },1000)
     }
     else{
-      endGame(1)
+      victory = 1
+      endGame(victory)
     }
   }
 }
@@ -272,19 +313,9 @@ endRematch.onclick = () => {
 }
 
 let enableQuestion = () => {
-  let flag;
   selectQuestionHMTL.value = ''
   selectQuestionHMTL.length = 1
-  possibleAtributes.forEach(key => {
-    flag = false
-    for(var atribute in myAnswers){ // check if was already asked, doesn't add it to the options if positive 
-      if(atribute == key){
-        flag = true
-      }
-    }
-    if(!flag) createAtributeHTML(key)
-   
-  })
+  createAtributeHTML()
   questionsHTML.style.display = "block"
   answersHTML.style.display = "none"
 
@@ -305,22 +336,26 @@ const cancelPlayerGuess = () => {
   guessedPersonHTML.value = ""
 
 }
+let drawKnownFacts = () => {
+  myAnswersHMTL.innerHTML = ""
+  Object.keys(myAnswers).forEach(ans => {
+    if(myAnswers[ans]){
+      colorAtr = "#00cc00"
+      myAnswersHMTL.innerHTML += `<b style="color:${colorAtr}">${atributeImages[words[ans]["eng"]]}${words[ans][language].toUpperCase()}✔️</b><br>`
+
+    }else{
+      colorAtr = "#ff0000"
+      myAnswersHMTL.innerHTML += `<b style="color:${colorAtr}">${atributeImages[words[ans]["eng"]]}${words[ans][language].toUpperCase()} ❌</b><br>`
+    } 
+  })
+}
 // Check asked question and add the response to the canvas
 function checkQuestion(atr) {
   if (atr) {
     let colorAtr;
     myAnswersHMTL.innerHTML = ''
     myAnswers[atr] = people[computerCard][atr] // don't need deep copy
-    Object.keys(myAnswers).forEach(ans => {
-      if(myAnswers[ans]){
-        colorAtr = "#00cc00"
-        myAnswersHMTL.innerHTML += `<b style="color:${colorAtr}">${atributeImages[ans]}${ans.toUpperCase()}✔️</b><br>`
-
-      }else{
-        colorAtr = "#ff0000"
-        myAnswersHMTL.innerHTML += `<b style="color:${colorAtr}">${atributeImages[ans]}${ans.toUpperCase()} ❌</b><br>`
-      } 
-    })
+    drawKnownFacts()
     return {
       atribute: atr,
       answer: myAnswers[atr]
@@ -341,14 +376,15 @@ let myMove = () => {
     for(var key in activeCards){
       if(key != "total") finalPerson = key; // get name of person left
     }
-    myGuessHMTL.innerHTML = `Are you ${finalPerson} ?`
+    myGuessHMTL.innerHTML = `${words["myGuess"][language]} ${finalPerson} ?`
     hideHUD()
     showFinal()
     timevar = setInterval(() => { // wait for player to confirm our victory (testing)
       if(finalAnswerValue){
         finalDivHMTL.style.display = "none"
         clearInterval(timevar)
-        endGame(0)
+        victory = 0
+        endGame(victory)
       }
     }, 500) // check 2 times per second
   }
@@ -371,9 +407,13 @@ guessedPersonHTML.onkeyup = (e) => {
   if (e.keyCode === 13) { // Enter key pressed
     if(exists){
       if (computerCard.toUpperCase() == $("#guesswho").val().toUpperCase()){
-          endGame(1)
+          victory  = 1
+          endGame(victory)
           return
-      }else endGame(0)
+      }else {
+        victory = 0
+        endGame(victory)
+      }
      
     }
     else{
@@ -426,6 +466,7 @@ let checkInput = () => {
       }
 }
 let playerMove = () => {
+  
   enableQuestion()
   timevar = setInterval(() => {
     if (questionValue) {

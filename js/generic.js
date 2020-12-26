@@ -3,9 +3,16 @@ const getRandomCard = (array) => {
     return array[Math.floor(Math.random() * (array.length-1))]
 }
 
-const makePhrase = atribute => {
-    if (atribute == "bald" || atribute == "male") return `Is (s)he ${atribute}?`
-    else return `Does (s)he have ${atribute}?`
+const makePhrase = (atribute,lang) => {
+    if(lang == "eng"){
+      if (atribute == "bald" || atribute == "male") return `Is (s)he ${words[atribute][lang]}?`
+      else return `Does (s)he have ${words[atribute][lang]}?`
+    }
+    else{
+      if (atribute == "bald" || atribute == "male") return `Ele(a) é ${words[atribute][lang]}?`
+      else return `Ele(a) tem ${words[atribute][lang]}?`
+    }
+
     
 }
 const getRandomBest = array =>{

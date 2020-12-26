@@ -17,7 +17,7 @@ body {
 
 @media (min-width: 0px) {
   :root {
-    --board-width: 80vw;
+    --board-width: calc(65vh / .5625);
     --card-width: calc(var(--board-width) / 10.6);
     --card-height: calc(var(--board-width) / 7.4);
   }
@@ -254,7 +254,7 @@ body {
 
 @media (min-width: 1400px) {
   :root {
-    --board-width: 1150px;
+    --board-width: calc(70vh / .5625);
   }
  
 }
@@ -429,12 +429,11 @@ button {
 }
 
 
-.btnConfirm{
-  background-color: #4CAF50;
+.btnConfirm,.btnCancel{
+  background: rgba(0, 0, 0, 0);
+  font-size: 4vh;
 }
-.btnCancel{
-  background-color: #c40000;
-}
+
 #divRematch{
   display: block;
   justify-content: center;
@@ -444,6 +443,7 @@ button {
   position:absolute;
   right:1vw;
   z-index:999;
+
 }
 #restartMsg{
   color: white;
@@ -456,6 +456,9 @@ button {
 }
 .buttonInfo:hover{
   transform: scale(1.1); 
+}
+#btnLanguage{
+  font-size: 5vh;
 }
 #logo{
   position: absolute;
@@ -568,5 +571,4 @@ button {
   animation: flash; /*ANIMATE.CSS*/
   animation-delay: 0.2s; /*ANIMATE.CSS*/
   animation-duration: 0.8s; /*ANIMATE.CSS*/
-  
 }

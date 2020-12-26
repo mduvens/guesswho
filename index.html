@@ -25,10 +25,10 @@
       <a href="./index.html" id="restartMsg" >
       <img style="max-width: 60px;"src="img/restart.png" alt="R">
     <br>
-      Restart
+      <span class="testLANG"id="restart__">Restart</span> 
     </a>
     </div>
-<br>
+  <br>
     <!-- <audio controls loop style="display: none;">
       <source src="audio/wiimusic.mp3" type="audio/mpeg">
     </audio> -->
@@ -36,7 +36,10 @@
     <div class="buttonInfo">
       <a  onclick="toggleMusic()"><img  style="max-width: 70px;" src="img/soundOFF.png" id="soundLogo"alt="ON"></a>
     </div>
-
+    <div class="buttonInfo">
+      <br>
+      <a  onclick="toggleLanguage()"><img  style="max-width: 70px;" src="img/flagEN.png"  id="btnLanguage"alt="ON"></a>
+    </div>
   </div>
   <div id="playerCheat" >
     <div id="playerCheatMsg"><h1 >⛔</h1></div>
@@ -69,22 +72,22 @@
 
   <div id="gameover">
     <div id="end">
-      <h1 id="endMessage" class="animate__animated animate__tada animate__slow animate__infinite"></h1>
-      <h3 id="whoItWas" class="animate__animated animate__bounceIn animate__slower"></h3>
+      <h1 id="endMessage" class="animate__animated animate__tada animate__slow animate__infinite "></h1>
+      <h3 id="whoItWas" class="animate__animated animate__bounceIn animate__slower "></h3>
    
-      <a href="#"><button id="endRematch">Rematch</button></a>
+      <a href="#"><button class="testLANG"id="endRematch">Rematch</button></a>
     </div>
   </div>
   <div id="finalDiv" class="animate__animated animate__zoomInDown">
     <!-- <div id="finalQ"> -->
       <h1 id="myGuess"></h1>
-      <a href="#" id="finalYES"><button class="btnConfirm" onclick="getFinalAnswerValue('yes')" >YES</button></a>
-      <a href="#"id="finalNO"><button class="btnCancel" onclick="getFinalAnswerValue('no')">NO?</button></a>
+      <a href="#" id="finalYES"><button class="btnConfirm " onclick="getFinalAnswerValue('yes')" >✔️</button></a>
+      <a href="#"id="finalNO"><button class="btnCancel " onclick="getFinalAnswerValue('no')">❌</button></a>
     <!-- </div> -->
   </div>
     <div id="factsKnown">
       
-        <span id="factsKnownMsg">Known Facts</span>
+        <span class="testLANG"id="factsKnownMsg">Known Facts</span>
         <br><br>
       <div id="myAnswers">
       </div>
@@ -92,29 +95,29 @@
 
     <div class="animate__animated animate__bounceIn"  id="questions" > 
     <select onchange="getQuestionValue(this.value)" class="select" id="selectQuestion">
-      <option disabled selected value="">Ask a question</option>
+      <option disabled selected value=""class="testLANG" id="askQuestion__">Ask a question</option>
     </select>
     <br><br>
     <div id="guess"> 
-      <a id="showPGuess"><button  class="animate__animated animate__headShake animate__slower animate__infinite" id="btnShowPGuess"onclick="showPlayerGuess()">Guess Who</button></a>
+      <a id="showPGuess"><button  class="animate__animated animate__headShake animate__slower animate__infinite testLANG" id="btnShowPGuess"onclick="showPlayerGuess()">Guess Who</button></a>
       
     </div>
   </div>
   <div class="animate__animated animate__bounceIn" id="answers">
     <!-- <a href="#" id="ask">ASK TO PLAYER</a> -->
-    <div ><h2 class="goldComputerMsg animate__animated animate__headShake animate__slow animate__infinite" >🤖Question🤖</h2></div>
+    <div><h2 class="goldComputerMsg animate__animated animate__headShake animate__slow animate__infinite testLANG" id="question__" >🤖Question🤖</h2></div>
   
     <p id="questionAsked"></p>
-  <br>
-    <a href="#" id="answerYES"><button class="btnConfirm" onclick="getAnswerValue('yes')" >YES</button></a>
-    <a href="#"id="answerNO"><button class="btnCancel" onclick="getAnswerValue('no')">NO</button></a>
+
+    <a href="#" id="answerYES"><button class="btnConfirm " onclick="getAnswerValue('yes')" >✔️</button></a>
+    <a href="#"id="answerNO"><button class="btnCancel " onclick="getAnswerValue('no')">❌</button></a>
 
 </div>
 <div id="playerGuess" class="animate__animated animate__bounceIn ">
-        <h2 class="goldComputerMsg animate__animated animate__headShake animate__slower animate__infinite"style="cursor: default;">🤖Who am I?🤖</h2>
+        <h2 class="goldComputerMsg animate__animated animate__headShake animate__slower animate__infinite testLANG"style="cursor: default;" id="whoAmI__">🤖Who am I?🤖</h2>
         <input type="text" id="guesswho" name="guesswho" autofocus>
-        <h2 style="cursor: default;">Only 1 try!</h2>
-        <a href="#"id="playerCancel"><button class="btnCancel" onclick="cancelPlayerGuess()">Back</button></a> 
+        <h2 style="cursor: default;" class="testLANG" id="only1Try__">Only 1 try!</h2>
+        <a href="#"id="playerCancel"style="text-decoration:none;background: none;font-size:5vh;" onclick="cancelPlayerGuess()">⛔</a> 
 </div>
  <!-- partial:index.partial.html -->
  <div id="main">
@@ -222,7 +225,7 @@
       <h1 class='title'>
         <!-- Guess Who -->
       </h1>
-      <button class='btn--rematch' id='btn-rematch' type='reset'>
+      <button class='btn--rematch testLANG' id='btn-rematch' type='reset'>
         cards up
       </button>
     </footer>
@@ -232,6 +235,7 @@
  </div>
 
 <!-- partial -->
+  <script src="js/language.js"></script>
   <script src ="js/people.js"></script>
   <script src ="js/generic.js"></script>
   <script defer src="js/script.js"></script>
