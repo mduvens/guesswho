@@ -3,22 +3,16 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: "Avenir", sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background-color: #345;
+
+
 }
-html.transition,
-html.transition *,
-html.transition *:before,
-html.transition *:after {
-transition: all 1750ms !important;
-transition-delay: 0 !important;
-}
+
 #main {
   -webkit-perspective: 1600px;
           perspective: 1600px;
   background-color: #345;
- 
-
 }
 
 @media (min-width: 0px) {
@@ -39,7 +33,11 @@ transition-delay: 0 !important;
     box-shadow: 0px -20px 60px 10px rgba(0, 0, 0, 0.5);
     position: relative;
     top: calc(var(--board-width) / 10);
-    background-color: #ff5d3e;
+    /* background-color: #ff5d3e; */
+    background-color: goldenrod; 
+
+
+
     border-radius: calc(var(--board-width) / 100);
     margin: auto;
   }
@@ -55,7 +53,9 @@ transition-delay: 0 !important;
 
   .slot {
     border-radius: calc(var(--board-width) / 100);
-    box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.2), 0px 2px 0px 1px #ff7036;
+    /* box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.2), 0px 2px 0px 1px #ff7036; */
+    box-shadow: inset 0px 5px 10px rgba(0, 0, 0, 0.2), 0px 2px 0px 1px rgba(199, 146, 13, 0.856);
+
   }
 
   .card {
@@ -84,7 +84,7 @@ transition-delay: 0 !important;
     display: block;
     position: relative;
     height: 100%;
-    background-image: url("guess.jpg");
+    background-image: url("../img/guess.jpg");
     background-size: calc(var(--board-width) / 2.13);
     transition: opacity 0.3s;
   }
@@ -95,7 +95,9 @@ transition-delay: 0 !important;
     height: calc(26.65% + 4px);
     left: 44%;
     box-sizing: border-box;
-    border: 4px solid #a93a14;
+    border: 4px solid gold;
+
+    /* border: 4px solid #a93a14; */
   }
 
   .control {
@@ -216,7 +218,9 @@ transition-delay: 0 !important;
   .title {
     font-size: 1vw;
     line-height: 1;
-    color: #d04f30;
+    /* color: #d04f30; */
+    color: whitesmoke;
+
     text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.4);
   }
 
@@ -226,7 +230,7 @@ transition-delay: 0 !important;
   }
 
   .btn--rematch {
-    background-color: #e65438;
+    background-color: gold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -234,6 +238,8 @@ transition-delay: 0 !important;
     font-weight: bold;
     font-family: "Avenir", sans-serif;
     text-transform: uppercase;
+    text-shadow: 0.5px 0.5px 0.5px black; /* added */
+
     letter-spacing: 0.04em;
     height: 25px;
     padding: 0 10px;
@@ -241,7 +247,8 @@ transition-delay: 0 !important;
     transition: background-color 0.3s;
   }
   .btn--rematch:hover {
-    background-color: #d1381a;
+    background-color: goldenrod;
+    /* background-color: #d1381a; */
   }
 }
 
@@ -253,7 +260,7 @@ transition-delay: 0 !important;
 }
 #questions{
   position: absolute;
-  display: block;
+  display: none;
   font-size: larger;
   bottom: 3vh;
   left: 1vw;
@@ -270,21 +277,11 @@ transition-delay: 0 !important;
   padding: 20px 20px;
   text-align: center;
   justify-content: center;
-  background-color: #33333371;
+  background-color: #000000b0;
   color: white;
  
 }
-.select{
-  padding: 8px 12px;
-  color: #494949;
-  border: 1px solid #dddddd;
-  cursor: pointer;
-  border-radius: 7px;
-  font-size: larger;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
+
 #gameover{
   display: none;
   position: fixed;
@@ -292,16 +289,22 @@ transition-delay: 0 !important;
   height: 100vh;
   justify-content: center;
   text-align: center;
-  background-color: #0f0f0fd3;
+  background-color: #0f0f0fd0;
   z-index: 500;
+  cursor: default;
 }
 #end{
-  font-family: 'Courier New', Courier, monospace;
-  font-size: x-large;
-  color: rgb(0, 158, 0);
+  /* font-family: "Avenir", sans-serif; */
+  font-size: 5vh;
   position: relative;
-  top: 40vh;
+  top: 20vh;
+  text-shadow: 1px 1px 1px black;
+ 
 }
+#whoItWas{
+  color: whitesmoke;
+}
+
 #finalDiv{
   display: none;
   position: fixed;
@@ -316,25 +319,35 @@ transition-delay: 0 !important;
   border-style: solid;
   border-radius: 20px;
   border-width: 2px;
-  background-color: #0f0f0fd3;
-  font-family: 'Courier New', Courier, monospace;
+  background-color: #0f0f0fe0;
+  /* font-family: "Avenir", sans-serif; */
   color:white;
   padding-bottom: 3vh;
+
+
 }
 #finalQ{
 
   font-size: x-large;
-  color: rgb(158, 155, 0);
+ 
   position: relative;
  
 }
 #endRematch{
-  background-color: #696d69; /* Green */
+  /* background-color: #696d69 */
+  background-color: #1a4a7f;
   border-radius: 20px;
   border: none;
   color: white;
   padding: 13px 22px;
   cursor: pointer;
+  font-size: large;
+  transition: all 1s;
+}
+#endRematch:hover{
+  background-color: #133d69;
+  transform: scale(1.1);
+
 }
 #ask{
   text-decoration: none;
@@ -353,14 +366,20 @@ transition-delay: 0 !important;
   justify-content: center;
   text-align: center;
   top: 2vh;
-  background-color: #2e2d2d23;
+  left:1vw;
+  border: 1px dashed white;
+  border-radius: 10px;
+  padding: 2vh 0;
+  cursor: default;
   color: whitesmoke;
   z-index: 150;
-  font-size: 1.5em;
+  font-size: 2.5vh;
   min-width: 13vw;
+
 }
+
 #factsKnownMsg{
-  font-size: 1.2em;
+  font-size: 1.4em;
   text-shadow: 2px 2px 2px black;
 }
 #myAnswers{
@@ -369,8 +388,9 @@ transition-delay: 0 !important;
 #listAnswers{
   list-style: none;
 }
-#computerAsks{
-  font-family: 'Courier New', Courier, 'monospace';
+.goldComputerMsg{
+  font-size: 4vh;
+  /* font-family: "Avenir", sans-serif; */
   color: gold;
 }
 #intro{
@@ -384,11 +404,11 @@ transition-delay: 0 !important;
   z-index: 1000;
 }
 #introContent{
-  font-family: 'Courier New', Courier, monospace;
+  /* font-family: "Avenir", sans-serif; */
   font-size: 5vh;
   color: goldenrod;
   position: relative;
-  top: 25vh;
+  top: 20vh;
 }
 #playButton{
   height: 10vh;
@@ -398,10 +418,9 @@ transition-delay: 0 !important;
   transform: rotate(360deg);
 }
 button {
- /* Green */
   border: none;
   color: white;
-  padding: 12px 40px;
+  padding: 10px 35px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -409,31 +428,145 @@ button {
   cursor: pointer;
 }
 
-#btnNo,#btnFinalNO{
-  background-color: #c40000;
-}
-#btnYes,#btnFinalYES{
+
+.btnConfirm{
   background-color: #4CAF50;
+}
+.btnCancel{
+  background-color: #c40000;
 }
 #divRematch{
   display: block;
   justify-content: center;
   text-align: center;
-  background-color: rgba(99, 99, 99, 0);
   font-size:larger;
-  font-family:'Courier New', Courier, monospace;
+  /* font-family: "Avenir", sans-serif; */
   position:absolute;
-  top:1vh;
   right:1vw;
-  z-index:1000;
+  z-index:999;
 }
 #restartMsg{
   color: white;
   text-decoration: none;
 }
+
+.buttonInfo{
+  cursor: pointer;
+  transition: all 1s;
+}
+.buttonInfo:hover{
+  transform: scale(1.1); 
+}
 #logo{
-  position: fixed;
-  width: 5vw;
+  position: absolute;
+  width: 90px;
   bottom:3vh;
   right:1vw;
+  z-index: 999;
+  transition: all 1s;
+}
+#logo:hover{
+  transform: scale(1.1);
+}
+#guesswho{
+  cursor: none;
+  font-size: xx-large;
+  text-align: center;
+  width: 19vw;
+}
+#playerGuess{
+  position: fixed;
+  display: none;
+  bottom: 1vh;
+  left:37vw;
+  /* max-height: 20vh; */
+  width: 26vw;
+  padding: 20px 0px;
+  color: whitesmoke;
+  background-color: #0f0f0fec;
+  justify-content: center;
+  text-align: center;
+  z-index: 1000;
+  border: 3px solid white;
+  border-radius: 20px;
+
+}
+.select{
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 7px;
+  font-size: larger;
+  appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  text-align-last: center;
+  -ms-text-align-last: center;
+}
+#selectQuestion{
+  background-color: #1a4a7f;
+  color: white;
+  transition: all .5s ease;
+  border: .2px solid #334455;
+  line-height: 4vh;
+}
+
+#selectQuestion:hover,#btnShowPGuess:hover{
+  background-color: #334455;
+  border: .2px solid white;
+}
+#btnShowPGuess{
+  background-color: goldenrod;
+  color: white;
+  font-size: larger;
+  border-radius: 7px;
+  line-height: 3vh;
+  min-width: 210px;
+  border: .2px solid #334455;
+  transition: all .5s ease;
+}
+#scoreboard{
+  position: fixed;
+  padding: 10x 10px;
+  right: 1vw;
+  top: 40vh;
+  width: 130px;
+  color: white;
+  z-index: 500;
+  font-size: 4vh;
+  cursor: default;
+}
+#myScoreboard,#playerScoreboard{
+  display: flex;
+}
+#myWins,#playerWins{
+  width: 35%;
+  text-align: center;
+ 
+}
+#playerName,#myName{
+  text-align: center;
+  width: 50%;
+}
+#hifen,#versus{
+  width: 30%;
+  text-align: center;
+}
+#playerCheat{
+  position: fixed;
+  display:none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 600;
+  justify-content: center;
+  text-align: center;
+}
+#playerCheatMsg{
+  position: relative;
+  top: 0vh;
+  font-size: 18vh; 
+  animation: flash; /*ANIMATE.CSS*/
+  animation-delay: 0.2s; /*ANIMATE.CSS*/
+  animation-duration: 0.8s; /*ANIMATE.CSS*/
+  
 }
