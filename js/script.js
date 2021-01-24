@@ -36,6 +36,17 @@ const finalNOHTML = document.getElementById("finalNO")
 const playerCheatHTML = document.getElementById("playerCheat")
 const btnLanguageHTML =  document.getElementById("btnLanguage")
 const testLANGHTML = document.querySelectorAll(".testLANG")
+const btnRestartHTML =  document.getElementById("btnRestart")
+const finalRestartHTML =  document.getElementById("finalRestart")
+const cancelRestartHTML =  document.getElementById("cancelRestart")
+
+cancelRestartHTML.onclick = () => {
+  finalRestartHTML.style.display ="none"
+}
+btnRestartHTML.onclick = () => {
+  finalRestartHTML.style.display ="block"
+}
+
 
 let language = "eng"
 

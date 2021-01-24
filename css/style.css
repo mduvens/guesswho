@@ -5,8 +5,6 @@ body {
   height: 100%;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background-color: #345;
-
-
 }
 
 #main {
@@ -267,10 +265,46 @@ body {
   z-index: 100; 
 
 }
+.select{
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 7px;
+  font-size: 3vh; /* mobile 4vh */
+  appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  text-align-last: center;
+  -ms-text-align-last: center;
+  width: 15vw; /* mobile 25vw*/
+  line-height: 4vh; /* mobile 6vh*/
+
+}
+#selectQuestion{
+  background-color: #1a4a7f;
+  color: white;
+  transition: all .5s ease;
+  border: .2px solid #334455;
+
+}
+
+#selectQuestion:hover,#btnShowPGuess:hover{
+  background-color: #334455;
+  border: .2px solid white;
+}
+#btnShowPGuess{
+  background-color: goldenrod;
+  color: white;
+  font-size: 3vh; /* mobile 4vh*/
+  border-radius: 7px;
+  line-height: 3vh; /* mobile 5vh*/
+  width: 15vw; /* mobile 25vw*/
+  border: .2px solid #334455;
+  transition: all .5s ease;
+}
+
 #answers{
   position: fixed;
   display: none;
-  font-size: larger;
   bottom: 5vh;
   left: 2vw;
   z-index: 100; 
@@ -281,7 +315,12 @@ body {
   color: white;
  
 }
-
+#question__{
+  font-size: 4vh; /* mobile 6vh */
+}
+#questionAsked{
+  font-size: 3vh; /* mobile 5vh*/
+}
 #gameover{
   display: none;
   position: fixed;
@@ -305,16 +344,16 @@ body {
   color: whitesmoke;
 }
 
-#finalDiv{
+.midDivMsg{
   display: none;
   position: fixed;
   /* width: 100vw;
   height: 100vh; */
   justify-content: center;
   text-align: center;
-  left:40vw;
-  width: 20vw;
-  top: 40vh;
+  left:35vw; /* mobile 30vw*/
+  width: 30vw; /* mobile  40vw*/
+  top: 40vh; /* mobile 35vh*/
   z-index: 500;
   border-style: solid;
   border-radius: 20px;
@@ -323,15 +362,11 @@ body {
   /* font-family: "Avenir", sans-serif; */
   color:white;
   padding-bottom: 3vh;
-
+  padding-top: 2vh;
 
 }
-#finalQ{
-
-  font-size: x-large;
- 
-  position: relative;
- 
+#myGuess{
+  font-size: 5vh; /* mobile 7vh*/
 }
 #endRematch{
   /* background-color: #696d69 */
@@ -353,9 +388,7 @@ body {
   text-decoration: none;
   color: white;
 }
-#questionAsked{
-  font-size: 1.3em;
-}
+
 #guess{
   display: inline;
   color:rgb(253, 253, 253);
@@ -365,22 +398,23 @@ body {
   position: fixed;
   justify-content: center;
   text-align: center;
-  top: 2vh;
+  top: 1vh;
   left:1vw;
-  border: 1px dashed white;
+  /* border: 1px dashed white; */
   border-radius: 10px;
   padding: 2vh 0;
   cursor: default;
   color: whitesmoke;
   z-index: 150;
-  font-size: 2.5vh;
+  font-size: 3vh;
   min-width: 13vw;
 
 }
 
 #factsKnownMsg{
-  font-size: 1.4em;
+  font-size: 1.5em;
   text-shadow: 2px 2px 2px black;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 #myAnswers{
   color: red;
@@ -388,9 +422,7 @@ body {
 #listAnswers{
   list-style: none;
 }
-.goldComputerMsg{
-  font-size: 4vh;
-  /* font-family: "Avenir", sans-serif; */
+.goldComputerMsg{ 
   color: gold;
 }
 #intro{
@@ -431,25 +463,30 @@ button {
 
 .btnConfirm,.btnCancel{
   background: rgba(0, 0, 0, 0);
-  font-size: 4vh;
+  font-size: 4vh; /* mobile 6vh */
 }
 
-#divRematch{
+#divInfo{
   display: block;
   justify-content: center;
   text-align: center;
-  font-size:larger;
   /* font-family: "Avenir", sans-serif; */
   position:absolute;
-  right:1vw;
+
+  bottom: 1vh;
+  right:1vw; /* mobile 3vw */
   z-index:999;
 
 }
+
 #restartMsg{
   color: white;
   text-decoration: none;
+  font-size: 2vh; /* mobile 3vh */
 }
-
+.infoImg{
+  max-width: 4vw; /* mobile 6vw */
+}
 .buttonInfo{
   cursor: pointer;
   transition: all 1s;
@@ -457,87 +494,57 @@ button {
 .buttonInfo:hover{
   transform: scale(1.1); 
 }
-#btnLanguage{
-  font-size: 5vh;
-}
-#logo{
-  position: absolute;
-  width: 90px;
-  bottom:3vh;
-  right:1vw;
-  z-index: 999;
-  transition: all 1s;
-}
-#logo:hover{
-  transform: scale(1.1);
-}
-#guesswho{
-  cursor: none;
-  font-size: xx-large;
-  text-align: center;
-  width: 19vw;
-}
+
+
+
 #playerGuess{
   position: fixed;
   display: none;
-  bottom: 1vh;
-  left:37vw;
-  /* max-height: 20vh; */
-  width: 26vw;
-  padding: 20px 0px;
+  bottom: 30vh;  /* mobile 20vh */
+  left: 32.5vw; /*  mobile 30vw*/
+  width: 35vw; /* mobile 40vw*/
+  padding-bottom: 3vh;
   color: whitesmoke;
   background-color: #0f0f0fec;
   justify-content: center;
   text-align: center;
   z-index: 1000;
-  border: 3px solid white;
-  border-radius: 20px;
+  border: .4vw solid white;
+  border-radius: 2vw;
 
 }
-.select{
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 7px;
-  font-size: larger;
-  appearance: none;
-  -webkit-appearance: none;
-  -ms-appearance: none;
-  text-align-last: center;
-  -ms-text-align-last: center;
+#whoAmI__{
+  font-size: 3vw; /* mobile 4vw*/
 }
-#selectQuestion{
-  background-color: #1a4a7f;
-  color: white;
-  transition: all .5s ease;
-  border: .2px solid #334455;
-  line-height: 4vh;
+#guesswho{
+  cursor: none;
+  font-size: 2vw ;/* mobile 3vw*/
+  text-align: center;
+  width: 19vw;
+}
+#only1Try__{
+  font-size:1.5vw; /* mobile 2.5vw*/ 
 }
 
-#selectQuestion:hover,#btnShowPGuess:hover{
-  background-color: #334455;
-  border: .2px solid white;
+
+#playerCancel{
+  text-decoration:none;
+  background: none;
+  font-size:3vw; /* mobile 4vw*/
 }
-#btnShowPGuess{
-  background-color: goldenrod;
-  color: white;
-  font-size: larger;
-  border-radius: 7px;
-  line-height: 3vh;
-  min-width: 210px;
-  border: .2px solid #334455;
-  transition: all .5s ease;
-}
+
 #scoreboard{
   position: fixed;
-  padding: 10x 10px;
-  right: 1vw;
-  top: 40vh;
-  width: 130px;
+  padding: 10px 10px;
+  right: 1vw; /* mobile 3vw */
+  top: 2vh;
+  width: 10vw; /* mobile 12 vw*/ 
   color: white;
   z-index: 500;
-  font-size: 4vh;
+  font-size: 5vh; /* mobile 6vh */
   cursor: default;
 }
+
 #myScoreboard,#playerScoreboard{
   display: flex;
 }
@@ -572,3 +579,85 @@ button {
   animation-delay: 0.2s; /*ANIMATE.CSS*/
   animation-duration: 0.8s; /*ANIMATE.CSS*/
 }
+
+
+@media(max-width:1024px){
+  #questions{
+    bottom: 0vh;
+  }
+  .select{
+    font-size: 4vh; 
+    width: 25vw; 
+    line-height: 6vh; 
+  }
+  #btnShowPGuess{
+    font-size: 4vh; 
+    line-height: 5vh; 
+    width: 25vw; 
+  }
+  #question__{
+    font-size: 6vh; 
+  }
+  #questionAsked{
+    font-size: 5vh; 
+  }
+  .midDivMsg{
+    left:30vw; 
+    width: 40vw; 
+    top: 35vh; 
+  }
+  #myGuess{
+    font-size: 7vh; 
+  }
+  .btnConfirm,.btnCancel{
+    font-size: 6vh; 
+  }
+  
+  #divInfo{
+    right:3vw; 
+  }
+  #restartMsg{
+    font-size: 3vh; 
+  }
+  .infoImg{
+    max-width: 5vw; 
+  }
+  #playerGuess{
+    bottom: 20vh; 
+    left: 30vw; 
+    width: 40vw; 
+  }
+  #whoAmI__{
+    font-size: 4vw; 
+  }
+  #guesswho{
+    font-size: 3vw ;
+  }
+  #only1Try__{
+    font-size:2.5vw; 
+  }
+  
+  
+  #playerCancel{
+    font-size:4vw; 
+  }
+  
+  #scoreboard{
+    right: 3vw; 
+    width: 12vw; 
+    font-size: 6vh; 
+
+  }
+  
+}
+/* @media screen and (min-width: 320px) and (orientation: portrait) {
+  html,body {
+    transform: rotate(90deg);
+    transform-origin: right top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+} */

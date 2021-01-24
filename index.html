@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
 
   <title>Guess Who</title>
   <link rel="stylesheet" href="css/style.css">
@@ -18,32 +18,9 @@
 <script src="https://kit.fontawesome.com/e44cccc008.js" crossorigin="anonymous"></script>
 </head>
 <body>
- 
-  <div id="divRematch">
-    <br>
-    <div class="buttonInfo"> 
-      <a href="./index.html" id="restartMsg" >
-      <img style="max-width: 60px;"src="img/restart.png" alt="R">
-    <br>
-      <span class="testLANG"id="restart__">Restart</span> 
-    </a>
-    </div>
-  <br>
-    <!-- <audio controls loop style="display: none;">
-      <source src="audio/wiimusic.mp3" type="audio/mpeg">
-    </audio> -->
-    
-    <div class="buttonInfo">
-      <a  onclick="toggleMusic()"><img  style="max-width: 70px;" src="img/soundOFF.png" id="soundLogo"alt="ON"></a>
-    </div>
-    <div class="buttonInfo">
-      <br>
-      <a  onclick="toggleLanguage()"><img  style="max-width: 70px;" src="img/flagEN.png"  id="btnLanguage"alt="ON"></a>
-    </div>
-  </div>
-  <div id="playerCheat" >
-    <div id="playerCheatMsg"><h1 >⛔</h1></div>
-  </div>
+  <!-- <div id="rotateScreen">
+
+  </div> -->
   <div id="scoreboard">
     <div id="myScoreboard">
       <div id="myName"><b>🤖</b></div>
@@ -57,8 +34,47 @@
     </div>
    
   </div>
+  <div id="finalRestart" class="midDivMsg">
+    <h1 id="restart__">Restart Game ?</h1>
+    <a href="./index.html"><button class="btnConfirm ">✔️</button></a>
+    <a href="#"id="cancelRestart"><button class="btnCancel " >❌</button></a>
+  </div>
+  <div id="divInfo" >
+    <br>
+    <div  id="btnRestart"class="buttonInfo"> 
+      <a href="#" id="restartMsg" >
+      <img class="infoImg"src="img/restart.png" alt="R">
+  
+    
+    </a>
+    </div>
+  <br>
 
-    <a href="http://git-alunos.lis.ulusiada.pt" target="_blank"><img id="logo" src="img/lusiada.png" alt="ULL"></a>
+    <!-- <audio controls loop style="display: none;">
+      <source src="audio/wiimusic.mp3" type="audio/mpeg">
+    </audio> -->
+    <div class="buttonInfo">
+      <a  onclick="toggleMusic()"><img  class="infoImg" src="img/soundOFF.png" id="soundLogo"alt="ON"></a>
+    </div>
+    <br>
+
+   
+    <div class="buttonInfo">
+      <a  onclick="toggleLanguage()"><img class="infoImg" src="img/flagEN.png"  id="btnLanguage"alt="ON"></a>
+    </div>
+    <br>
+  
+  
+    <div class="buttonInfo">
+    <a href="http://git-alunos.lis.ulusiada.pt" target="_blank"><img class="infoImg"id="logo" src="img/lusiada.png" alt="ULL"></a>
+    </div>
+  </div>
+  <div id="playerCheat" >
+    <div id="playerCheatMsg"><h1 >⛔</h1></div>
+  </div>
+
+
+    
 
   <div id ="intro">
     <div id="introContent">
@@ -78,7 +94,7 @@
       <a href="#"><button class="testLANG"id="endRematch">Rematch</button></a>
     </div>
   </div>
-  <div id="finalDiv" class="animate__animated animate__zoomInDown">
+  <div id="finalDiv"class="midDivMsg animate__animated animate__zoomInDown">
     <!-- <div id="finalQ"> -->
       <h1 id="myGuess"></h1>
       <a href="#" id="finalYES"><button class="btnConfirm " onclick="getFinalAnswerValue('yes')" >✔️</button></a>
@@ -97,7 +113,8 @@
     <select onchange="getQuestionValue(this.value)" class="select" id="selectQuestion">
       <option disabled selected value=""class="testLANG" id="askQuestion__">Ask a question</option>
     </select>
-    <br><br>
+    <br>
+    <br>
     <div id="guess"> 
       <a id="showPGuess"><button  class="animate__animated animate__headShake animate__slower animate__infinite testLANG" id="btnShowPGuess"onclick="showPlayerGuess()">Guess Who</button></a>
       
@@ -117,7 +134,7 @@
         <h2 class="goldComputerMsg animate__animated animate__headShake animate__slower animate__infinite testLANG"style="cursor: default;" id="whoAmI__">🤖Who am I?🤖</h2>
         <input type="text" id="guesswho" name="guesswho" autofocus>
         <h2 style="cursor: default;" class="testLANG" id="only1Try__">Only 1 try!</h2>
-        <a href="#"id="playerCancel"style="text-decoration:none;background: none;font-size:5vh;" onclick="cancelPlayerGuess()">⛔</a> 
+        <a href="#"id="playerCancel" onclick="cancelPlayerGuess()">⛔</a> 
 </div>
  <!-- partial:index.partial.html -->
  <div id="main">
